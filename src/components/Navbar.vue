@@ -16,7 +16,7 @@
               data-target="dropdown"
               ref="navAccount"
           >
-            USER NAME
+            {{ name }}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
 
@@ -48,7 +48,9 @@ export default {
     dropdown: null
   }),
   computed: {
-
+    name() {
+      return this.$store.getters.info.name
+    }
   },
   methods: {
     async logout() {

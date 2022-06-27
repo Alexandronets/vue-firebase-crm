@@ -8,6 +8,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/database';
 import messagePlugin from "@/utils/message.plugin";
+import Loader from "@/components/Loader";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBueh3BoDp9mFD2WV_0octB12p2eyosCGI",
@@ -23,7 +24,9 @@ let app;
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(() => {
     if (!app) {
-        app = createApp(App).use(store).use(router).use(messagePlugin).mount('#app');
+        app = createApp(App).use(store).use(router).use(messagePlugin)
+            .component('Loader', Loader)
+            .mount('#app');
     }
 })
 

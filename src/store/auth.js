@@ -4,7 +4,7 @@ export default {
     actions: {
         async login({dispatch, commit}, {email, password}) {
             try {
-                await firebase.auth().signInWithEmailAndPassword(email, password)
+                await firebase.auth().signInWithEmailAndPassword(email, password);
             } catch (e) {
                 commit('setError', e)
                 throw e
@@ -30,8 +30,9 @@ export default {
             return user ? user.uid : null
         },
 
-        async logout() {
+        async logout({commit}) {
             await firebase.auth().signOut()
+            commit('clearInfo')
         }
     }
 }
