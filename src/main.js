@@ -11,14 +11,15 @@ import messagePlugin from "@/utils/message.plugin";
 import Loader from "@/components/Loader";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBueh3BoDp9mFD2WV_0octB12p2eyosCGI",
-    authDomain: "crm-system-1db55.firebaseapp.com",
-    databaseURL: "https://crm-system-1db55-default-rtdb.firebaseio.com",
-    projectId: "crm-system-1db55",
-    storageBucket: "crm-system-1db55.appspot.com",
-    messagingSenderId: "252844443696",
-    appId: "1:252844443696:web:d5c42c8eb56fb7aeb785f5"
+    apiKey: "AIzaSyDQ-osdOEdMTkj9gNGW9IH_36R0BktWg1s",
+    authDomain: "vue-firebase-17d17.firebaseapp.com",
+    databaseURL: "https://vue-firebase-17d17-default-rtdb.firebaseio.com",
+    projectId: "vue-firebase-17d17",
+    storageBucket: "vue-firebase-17d17.appspot.com",
+    messagingSenderId: "562065428556",
+    appId: "1:562065428556:web:b1374354ad832c8881e4e9"
 };
+
 let app;
 
 firebase.initializeApp(firebaseConfig);
