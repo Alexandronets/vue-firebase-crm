@@ -7,7 +7,7 @@
     <p class="center" v-else-if="!categories.length">There is no categories yet
     <router-link to="/categories">Add new category</router-link>
     </p>
-    <form class="form" v-else>
+    <form class="form" v-else >
       <div class="input-field" >
         <select ref="select" v-model="category">
           <option v-for="category in categories"
@@ -27,7 +27,7 @@
               value="income"
               v-model="type"
           />
-          <span>Доход</span>
+          <span>Income</span>
         </label>
       </p>
 
@@ -40,7 +40,7 @@
               value="outcome"
               v-model="type"
           />
-          <span>Расход</span>
+          <span>Outcome</span>
         </label>
       </p>
 
@@ -49,8 +49,8 @@
             id="amount"
             type="number"
         >
-        <label for="amount">Сумма</label>
-        <span class="helper-text invalid">amount пароль</span>
+        <label for="amount">Amount</label>
+        <span class="helper-text invalid">amount password</span>
       </div>
 
       <div class="input-field">
@@ -58,13 +58,13 @@
             id="description"
             type="text"
         >
-        <label for="description">Описание</label>
+        <label for="description">Description</label>
         <span
-            class="helper-text invalid">description пароль</span>
+            class="helper-text invalid">description password</span>
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
-        Создать
+        Create
         <i class="material-icons right">send</i>
       </button>
     </form>
@@ -81,7 +81,7 @@ export default {
     categories: [],
     select: null,
     category: null,
-    type: 'income'
+    type: 'outcome'
   }),
   async mounted() {
     this.categories = await this.$store.dispatch('getCategories')
