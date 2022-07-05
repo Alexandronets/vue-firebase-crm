@@ -1,16 +1,21 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>Новая запись</h3>
+      <h3>New record</h3>
     </div>
-
-    <form class="form">
+    <Loader v-if="loading"/>
+    <p class="center" v-else-if="!categories.length">There is no categories yet
+    <router-link to="/categories">Add new category</router-link>
+    </p>
+    <form class="form" v-else>
       <div class="input-field" >
-        <select>
-          <option
-          >name cat</option>
+        <select ref="select" v-model="category">
+          <option v-for="category in categories"
+                  :key="category.id"
+                  :value="category.id"
+          >{{ category.title }}</option>
         </select>
-        <label>Выберите категорию</label>
+        <label>Choose category</label>
       </div>
 
       <p>
@@ -20,6 +25,7 @@
               name="type"
               type="radio"
               value="income"
+              v-model="type"
           />
           <span>Доход</span>
         </label>
@@ -32,6 +38,7 @@
               name="type"
               type="radio"
               value="outcome"
+              v-model="type"
           />
           <span>Расход</span>
         </label>
@@ -65,8 +72,32 @@
 </template>
 
 <script>
+import Loader from "@/components/Loader";
 export default {
-  name: "Record"
+  name: "Record",
+  components: {Loader},
+  data: () => ({
+    loading: true,
+    categories: [],
+    select: null,
+    category: null,
+    type: 'income'
+  }),
+  async mounted() {
+    this.categories = await this.$store.dispatch('getCategories')
+    this.loading = false
+    if (this.categories.length) {
+      this.category = this.categories[0].id
+    }
+    this.select = setTimeout(() => {
+      M.FormSelect.init(this.$refs.select)
+    }, 0)
+  },
+  unmounted() {
+    if(this.select && this.select.destroy) {
+      this.select.destroy()
+    }
+  },
 }
 </script>
 
