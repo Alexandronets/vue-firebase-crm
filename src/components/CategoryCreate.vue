@@ -82,10 +82,13 @@ export default {
           title: this.title,
           limit: this.limit
         })
+        this.$message(`Category ${category.title} created`)
         this.$emit('created', category)
         this.title = ''
         this.v$.title.$dirty = false
-      } catch (e) {}
+      } catch (e) {
+        this.$message('Something happens wrong!!!')
+      }
     }
   }
 }
