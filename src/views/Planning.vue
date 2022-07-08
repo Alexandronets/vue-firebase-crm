@@ -78,7 +78,6 @@ export default {
         tooltip
       }
     })
-debugger
     this.loading = false
   }
 }

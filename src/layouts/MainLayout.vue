@@ -25,6 +25,7 @@
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import messages from "@/utils/messages";
 export default {
   name: "MainLayout",
   data: () => ({
@@ -38,8 +39,18 @@ export default {
 
     this.loading = false
   },
-  components: {Sidebar, Navbar, Footer}
-
+  components: {Sidebar, Navbar, Footer},
+  computed: {
+    error() {
+      return this.$store.getters.error
+    }
+  },
+  watch: {
+    error(fbError) {
+      console.log(fbError);
+      this.$error(messages[fbError.code] || 'something went wrong!')
+    }
+  }
 }
 </script>
 
