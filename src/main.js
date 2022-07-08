@@ -8,6 +8,8 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/database';
 import messagePlugin from "@/utils/message.plugin";
+import currencyPlugin from "@/utils/currency.plugin";
+import tooltipDirective from "@/directives/tooltip.directive";
 import Loader from "@/components/Loader";
 
 const firebaseConfig = {
@@ -25,8 +27,13 @@ let app;
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(() => {
     if (!app) {
-        app = createApp(App).use(store).use(router).use(messagePlugin)
+        app = createApp(App)
+            .use(store)
+            .use(router)
+            .use(messagePlugin)
+            .use(currencyPlugin)
             .component('Loader', Loader)
+            .directive('tooltip', tooltipDirective)
             .mount('#app');
     }
 })
