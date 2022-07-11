@@ -11,6 +11,9 @@ import messagePlugin from "@/utils/message.plugin";
 import currencyPlugin from "@/utils/currency.plugin";
 import tooltipDirective from "@/directives/tooltip.directive";
 import Loader from "@/components/Loader";
+import datePlugin from "@/utils/date.plugin";
+import Paginate from "vuejs-paginate-next";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDQ-osdOEdMTkj9gNGW9IH_36R0BktWg1s",
@@ -32,6 +35,8 @@ firebase.auth().onAuthStateChanged(() => {
             .use(router)
             .use(messagePlugin)
             .use(currencyPlugin)
+            .use(datePlugin)
+            .use(Paginate)
             .component('Loader', Loader)
             .directive('tooltip', tooltipDirective)
             .mount('#app');

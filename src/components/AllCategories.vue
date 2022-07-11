@@ -3,7 +3,7 @@
     <table  v-if="categories.length">
       <thead>
       <tr>
-        <th v-for="title in header">{{ title }}</th>
+        <th v-for="head in header" :style="{textAlign: head.align}" :key="head.title">{{ head.title }}</th>
       </tr>
       </thead>
       <tbody>
@@ -15,7 +15,7 @@
         <td>{{category.limit}}</td>
         <td>
           <a
-              class="btn-floating btn waves-effect waves-light orange"
+              class="btn-small btn"
               @click="removed(category.id)"
               title="remove"
           >
@@ -43,7 +43,11 @@ export default {
     }
   },
   data: () => ({
-    header: ['Name', 'Money', 'Actions']
+    header: [
+      {title: 'Name', align: 'start'},
+      {title:'Money', align: 'start'},
+      {title:'Actions', align: 'center'}
+    ]
   }),
   methods: {
     removed(catId) {
@@ -61,5 +65,14 @@ export default {
 <style scoped lang="scss">
 .category-wrapper {
   margin-top: 30px;
+}
+tbody {
+  tr {
+    td {
+      &:last-child {
+        text-align: center;
+      }
+    }
+  }
 }
 </style>

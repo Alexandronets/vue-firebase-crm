@@ -152,7 +152,7 @@ export default {
             amount: this.amount,
             description: this.description,
             type: this.type,
-            date: new Date().toJSON()
+            date: this.$date(new Date(), 'datetime')
           })
           const bill = this.type === 'income' ?
               this.info.bill + this.amount :
