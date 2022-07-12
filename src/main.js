@@ -13,6 +13,7 @@ import tooltipDirective from "@/directives/tooltip.directive";
 import Loader from "@/components/Loader";
 import datePlugin from "@/utils/date.plugin";
 import Paginate from "vuejs-paginate-next";
+import VueApexCharts from "vue3-apexcharts";
 
 
 const firebaseConfig = {
@@ -38,6 +39,7 @@ firebase.auth().onAuthStateChanged(() => {
             .use(datePlugin)
             .use(Paginate)
             .component('Loader', Loader)
+            .component('ApexChart', VueApexCharts)
             .directive('tooltip', tooltipDirective)
             .mount('#app');
     }
